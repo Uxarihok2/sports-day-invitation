@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: none;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* 網頁背景漸層＋動畫 */
+  body {
+    font-family: 'Zhi Mang Xing', cursive;
+    color: PaleVioletRed;
+    background-image: linear-gradient(
+      in oklch longer hue to bottom,
+      oklch(0.93 0.03 0),
+      oklch(0.93 0.03 1)
+    );
+    background-position: top right;
+    background-repeat: repeat;
+    background-size: 200vw 200vh;
+    animation-name: anim_bg;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  /* 背景漸層移動的關鍵影格 */
+  @keyframes anim_bg {
+    0% {
+      background-position: 0vw 0vh;
+    }
+    100% {
+      background-position: 0vw 200vh;
+    }
+  }
+  
+  main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* 主要內容區塊（放文字、圓形） */
+  section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden; /* 確保超出範圍的圓形可正常移入 */
+  }
+
+  .center-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+  }
+
+/* 預設 fully opaque (不透明) */
+#page {
+  opacity: 1;
+  transition: opacity 1s ease; /* 1秒淡出 */
+}
+
+/* 加上 .fade-out 時 -> opacity=0 */
+#page.fade-out {
+  opacity: 0;
+}
+
+  .container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  @font-face {
+    font-family: "粉圓體";
+    src: url('./font/jf-openhuninn-2.1.ttf') format('truetype');
+}
+
+@keyframes glowIn {
+  0% {
+    text-shadow: none; 
+    /* 可以也把 color 設暗一點 (if needed) */
+  }
+  100% {
+    text-shadow:
+    0 0 5px #fff,   
+    0 0 10px rgb(250, 242, 250), 
+    0 0 20px rgb(255, 246, 255);
+  }
+}
+  /* 「敬邀」文字：垂直排版 */
+  h1 {
+    position: relative;
+    font-size: 10rem;
+    z-index: 2;  /* 文字在上層 */
+    user-select: none;
+    font-family: '粉圓體';
+    letter-spacing: 1rem;
+    writing-mode: vertical-rl; /* 設定垂直書寫模式與直立顯示 */
+    animation: glowIn 2s ease forwards;
+    animation-delay: 0.5s;
+  }
+  
+/* 所有圓形的基本樣式 */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  /* 第一顆圓形的獨立樣式 */
+  .circle1 {
+    width: 200px;
+    height: 200px;
+    background-color: #ff6347;
+    z-index: 0;
+    animation: move1 2s ease forwards; 
+  }
+  
+
+  @keyframes move1 {
+    0% {
+      left: -10%;
+      top: -10%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      left: 90%;
+      top: 35%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+    /* 第二顆圓形 */
+    .circle2 {
+        width: 180px;
+        height: 180px;
+        background-color: #ed72b2;
+        z-index: 0;
+        animation: move2 1.5s ease forwards; 
+      }
+      
+      @keyframes move2 {
+        0% {
+          right: -90%;
+          top: 130%;
+          opacity: 0;
+          transform: translate(-50%, -50%);
+        }
+        100% {
+          right: -20%;
+          top: 90%;
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+  
+        /* 第三顆圓形 */
+  .circle3 {
+    width: 80px;
+    height: 80px;
+    background-color: #97cce8;
+    z-index: 0;
+    animation: move3 1.5s ease forwards; 
+  }
+  
+  @keyframes move3 {
+    0% {
+      right: -70%;
+      top: 20%;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      right: 40%;
+      top: 5%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+    /* 第四顆圓形 */
+    .circle4 {
+        width: 50px;
+        height: 50px;
+        background-color: #f7ce46;
+        z-index: 0;
+        animation: move4 1.5s ease forwards; 
+      }
+      
+      @keyframes move4 {
+        0% {
+          left: -10%;
+          top: 20%;
+          opacity: 0;
+          transform: translate(-50%, -50%);
+        }
+        100% {
+          left: 90%;
+          top: 90%;
+          opacity: 1;
+          transform: translate(-50%, 80%);
+        }
+      }
+      
