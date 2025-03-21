@@ -36,6 +36,7 @@
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    overflow: hidden;
   }
   
   /* 背景漸層移動的關鍵影格 */
