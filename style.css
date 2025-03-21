@@ -48,6 +48,13 @@
       background-position: 0vw 200vh;
     }
   }
+
+  @media (max-width: 768px) {
+    section, .container {
+      height: 100vh;
+      overflow: hidden;
+    }
+  }
   
   main {
     position: relative;
